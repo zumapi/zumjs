@@ -1,0 +1,25 @@
+{
+  "name": "zumjs",
+  "version": "0.1.0",
+  "description": "Javascript client library for zum server",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaygozi/zumjs.git"
+  },
+  "author": "zaygo",
+  "bin": "main.js",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaygozi/zumjs/issues"
+  },
+  "homepage": "https://github.com/zaygozi/zumjs#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "conf": "^6.2.4",
+    "njwt": "^1.0.0"
+  }
+}
