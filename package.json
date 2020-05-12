@@ -1,6 +1,6 @@
 {
   "name": "zumjs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Javascript client library for zum server",
   "main": "main.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/zaygozi/zumjs.git"
   },
   "author": "zaygo",
-  "bin": "main.js",
+  "bin": "./main.js",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zaygozi/zumjs/issues"

@@ -110,3 +110,5 @@ function fetchUser(user, callback) {
             callback(err, null)
     });
 }
+
+module.exports = {configure, register, login, update, terminate, fetchUser};
