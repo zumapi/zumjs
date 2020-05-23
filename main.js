@@ -25,7 +25,7 @@ function register(key_priority, claims_object, callback) {
     axios.get(`${config.get('mk')}/${key_priority}`).then((res) => {
         let key = Buffer.from(res.data, 'base64');
         let claims = claims_object;
-        claims.set('app', config.get('appName'));
+        claims.app = config.get('appName');
         let jwt = njwt.create(claims, key);
         let token = jwt.compact();
         axios.post(config.get('register'), {
