@@ -10,6 +10,7 @@ function configure(object) {
     let register = object.register || null;
     let users = object.users || null;
     let login = object.login || null;
+    let verify = object.verify || null;
     let stats = object.stats || null;
     
     config.set('appName', appName);
@@ -17,6 +18,7 @@ function configure(object) {
     config.set('register', register);
     config.set('users', users);
     config.set('login', login);
+    config.set('verify', verify);
     config.set('stats', stats);
 }
 
@@ -203,4 +205,15 @@ function enable(username,callback) {
     });
 }
 
-module.exports = {configure, register, login, update, terminate, fetchUser, serverStats, userStats, disable, enable};
+// Verify request token
+function verify(username,token,callback) {
+    axios.get(`${config.get('verify')}/${username}/${token}`).then((res) => {
+        if(callback)
+            callback(null,res);
+    }, (err) => {
+        if(callback)
+            callback(err,null);
+    });
+}
+
+module.exports = {configure, register, login, update, terminate, fetchUser, serverStats, userStats, disable, enable, verify};

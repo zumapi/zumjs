@@ -1,7 +1,7 @@
 {
   "name": "zumjs",
-  "version": "0.3.2",
-  "description": "Javascript client library for zum server",
+  "version": "0.4.0",
+  "description": "Javascript client library for interacting with zum server",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
