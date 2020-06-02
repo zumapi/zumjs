@@ -10,6 +10,7 @@ function configure(object) {
     let register = object.register || null;
     let users = object.users || null;
     let login = object.login || null;
+    let logout = object.logout || null;
     let verify = object.verify || null;
     let stats = object.stats || null;
     
@@ -18,6 +19,7 @@ function configure(object) {
     config.set('register', register);
     config.set('users', users);
     config.set('login', login);
+    config.set('logout', logout);
     config.set('verify', verify);
     config.set('stats', stats);
 }
@@ -209,11 +211,27 @@ function enable(username,callback) {
 function verify(username,token,callback) {
     axios.get(`${config.get('verify')}/${username}/${token}`).then((res) => {
         if(callback)
-            callback(null,res);
+            callback(null, res);
     }, (err) => {
         if(callback)
-            callback(err,null);
+            callback(err, null);
     });
 }
 
-module.exports = {configure, register, login, update, terminate, fetchUser, serverStats, userStats, disable, enable, verify};
+// Logout
+function logout(username,callback) {
+    axios.get(`${config.get('logout')}/${username}`).then((res) => {
+        if(res.status == 200) {
+            if(callback)
+                callback(null, res);
+        }
+        let err = 'Bad request';
+        if(callback)
+            callback(err, null);
+    }, (err) => {
+        if(callback)
+            callback(err, null);
+    });
+}
+
+module.exports = {configure, register, login, update, terminate, fetchUser, serverStats, userStats, disable, enable, verify, logout};

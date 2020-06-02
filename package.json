@@ -1,6 +1,6 @@
 {
   "name": "zumjs",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "Javascript client library for interacting with zum server",
   "main": "main.js",
   "scripts": {
