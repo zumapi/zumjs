@@ -30,7 +30,7 @@ zum.configure({
 ```
 
 #### register
-*Create a new user*
+*Create a new user. User will need to verify the email address before signing in, unless verified flag is set to true*
 ```js
 zum.register(key_id, claims, callback)
 ```
@@ -43,7 +43,8 @@ zum.register('key1', {
     name : 'Arjun Nair',
     email : 'zaygo@myemail.com',
     scope : 'admin',
-    country : 'Austria'
+    country : 'Austria',
+    verified : false
 }, (err, res) => {
     if (err) throw err;
     console.log(res.status);
@@ -75,5 +76,29 @@ zum.update(key_id, username, update_object, callback)
 * username : Unique username
 * update_object : Object containing parameters to update
 ```js
-
+zum.update('key3', 'zaygo', {
+    name : 'Zaygo',
+    country : 'Germany'
+}, (err,res) => {
+    if (err) throw err;
+    console.log(res.status);
+});
 ```
+
+#### terminate
+*Delete user account. User will receive an email.*
+```js
+zum.terminate(username, delete_object, callback)
+```
+* username : Unique username
+* delete_object : Contains the reason and initiator for the termination. These details will be passed to the user via email.
+
+#### fetchUser
+*Fetch user details using the username or email*
+```js
+zum.fetchUser(user, callback)
+```
+* user : username or registered email of the user
+
+#### serverStats
+*Get raw server stats of the zum server. Currently provides cpu, memory and disk stats.*
