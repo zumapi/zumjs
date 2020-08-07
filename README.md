@@ -34,7 +34,7 @@ zum.configure({
 ```js
 zum.register(key_id, claims, callback)
 ```
-* key_id : Master key id to use to sign the jwt token
+* key_id : Master key id to use to sign the outgoing jwt token
 * claims : User data
 ```js
 zum.register('key1', {
@@ -51,3 +51,29 @@ zum.register('key1', {
 ```
 
 #### login 
+*Acquire access token for a user*
+```js
+zum.login(key_id, username, password, callback)
+```
+* key_id : Master key id to use to sign the outgoing jwt token
+* username : Unique username
+* password : User password
+```js
+zum.login('key2', 'zaygo', 'Mypass@123', (err,res) => {
+    if (err) throw err;
+    console.log(res.status);
+    console.log(res.headers['x-auth-token']);  // access token can be found inside the response header
+});
+```
+
+#### update
+*Update user account*
+```js
+zum.update(key_id, username, update_object, callback)
+```
+* key_id : Master key id to use to sign the outgoing jwt token
+* username : Unique username
+* update_object : Object containing parameters to update
+```js
+
+```
