@@ -9,7 +9,7 @@ zum.configure({
 // all values default to null unless specified
 })
 ```
-*These values should be passed inside the configuration object to undertake various operations using the library*
+*These values can be passed inside the configuration object to undertake various operations using the library*
 * appName : Every app registered in zum has a unique app name. It serves as an id to identify the app.
 * mk : Master key endpoint
 * register : Registration endpoint
@@ -28,3 +28,26 @@ zum.configure({
     mk: 'http://www.myapp.com/mk'
 });
 ```
+
+#### register
+*Create a new user*
+```js
+zum.register(key_id, claims, callback)
+```
+* key_id : Master key id to use to sign the jwt token
+* claims : User data
+```js
+zum.register('key1', {
+    username : 'zaygo',
+    password : 'Mypass@123',
+    name : 'Arjun Nair',
+    email : 'zaygo@myemail.com',
+    scope : 'admin',
+    country : 'Austria'
+}, (err, res) => {
+    if (err) throw err;
+    console.log(res.status);
+});
+```
+
+#### login 
