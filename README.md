@@ -102,3 +102,20 @@ zum.fetchUser(user, callback)
 
 #### serverStats
 *Get raw server stats of the zum server. Currently provides cpu, memory and disk stats.*
+```js
+zum.serverStats(callback)
+```
+*Callback will contain : *
+* cpu : Real time cpu utilization
+* mem : Real time memory utilization
+* disk : Real time disk utilization
+
+#### userStats
+*Get general user stats*
+```js
+zum.userStats(callback)
+```
+*Callback will contain : *
+* registered : Number of registered users on the server
+* logged : Number of users currently logged in
+* disabled : Number of users currently disabled
