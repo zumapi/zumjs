@@ -1,7 +1,5 @@
 # ZUM JS
 
-### Available Modules
-
 *Before using these modules install and require the library*
 ```sh
 npm install zumjs
