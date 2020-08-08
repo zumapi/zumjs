@@ -2,6 +2,14 @@
 
 ### Available Modules
 
+*Before using these modules install and require the library*
+```sh
+npm install zumjs
+```
+```js
+const zum = require('zumjs')
+```
+
 #### configure
 *This is a required module for the client to interact with the zum server. It configures the client with the necessary details like appName and server endpoints. No other module will work unless the client is configured.*
 ```js
@@ -105,7 +113,7 @@ zum.fetchUser(user, callback)
 ```js
 zum.serverStats(callback)
 ```
-*Callback will contain : *
+*Callback will contain :*
 * cpu : Real time cpu utilization
 * mem : Real time memory utilization
 * disk : Real time disk utilization
@@ -115,7 +123,42 @@ zum.serverStats(callback)
 ```js
 zum.userStats(callback)
 ```
-*Callback will contain : *
+*Callback will contain :*
 * registered : Number of registered users on the server
 * logged : Number of users currently logged in
 * disabled : Number of users currently disabled
+
+#### disable & enable
+*Disable a user for a certain number of days or manually re-enable a disabled user. The user will receive an email.*
+```js
+zum.disable(username, days, reason, callback)
+zum.enable(username, callback)
+```
+* username : Unique username
+* days : Number of days before the ban ends
+* reason : Reason for the ban
+```js
+zum.disable('arjun', 7, 'You violated rule 4', (err,res) => {
+    if (err) throw err;
+    console.log(res.status);
+});
+zum.enable('arjun', (err,res) => {
+    if (err) throw err;
+    console.log(res.status);
+});
+```
+
+#### verify
+*Verify access token*
+```js
+zum.verify(username, token, callback)
+```
+* username : Unique username
+* token : Access token received from zum server
+
+#### logout
+*Logs out the user and invalidates the access token*
+```js
+zum.logout(username, callback)
+```
+* username : Unique username
