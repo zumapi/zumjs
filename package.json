@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/zaygozi/zumjs#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "conf": "^6.2.4",
     "njwt": "^1.0.0"
   }
